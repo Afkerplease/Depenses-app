@@ -1,4 +1,5 @@
 import { useReducer, useContext, createContext } from "react";
+import { Grid, GridItem, Heading, Center } from "@chakra-ui/react";
 
 import "./App.css";
 
@@ -35,10 +36,26 @@ function App() {
   return (
     <>
       <DeponseContext.Provider value={{ state, dispatch }}>
-        <FormDepenses />
-        <h6> {state.total} </h6>
-        <Aside />
-        <ListDéponses />
+        <Center marginTop={"2rem"}>
+          <Heading style={{ fontFamily: "Dancing Script", fontWeight: "700" }}>
+            {" "}
+            Dépenses App 💰{" "}
+          </Heading>
+        </Center>
+        <Grid
+          gridTemplateColumns={" 1fr 400px"}
+          templateAreas={`"header header" "aside main" `}
+        >
+          <GridItem area={"header"}>
+            <FormDepenses />
+          </GridItem>
+          <GridItem area={"aside"}>
+            <ListDéponses />
+          </GridItem>
+          <GridItem area={"main"}>
+            <Aside />
+          </GridItem>
+        </Grid>
       </DeponseContext.Provider>
     </>
   );
