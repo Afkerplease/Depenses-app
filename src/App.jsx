@@ -3,6 +3,8 @@ import { useReducer, useContext, createContext } from "react";
 import "./App.css";
 
 import FormDepenses from "./components/FormDepenses";
+import ListDéponses from "./components/ListDéponses";
+import Aside from "./components/Aside";
 export const DeponseContext = createContext();
 
 const initalState = {
@@ -33,23 +35,10 @@ function App() {
   return (
     <>
       <DeponseContext.Provider value={{ state, dispatch }}>
-        <FormDepenses dispatch={dispatch} />
-
+        <FormDepenses />
         <h6> {state.total} </h6>
-        {Object.values(state.categorieDépense).map((category, index) => (
-          <h1 key={index}> {category} $ </h1>
-        ))}
-        {Object.keys(state.categorieDépense).map((category, index) => (
-          <h1 key={index}> {category} </h1>
-        ))}
-
-        {state.dépenses.map((dep, index) => (
-          <div style={{ border: "1px solid black" }} key={index}>
-            <h1> {dep.description} </h1>
-            <h2>{dep.prix} </h2>
-            <p>{dep.categorie}</p>
-          </div>
-        ))}
+        <Aside />
+        <ListDéponses />
       </DeponseContext.Provider>
     </>
   );

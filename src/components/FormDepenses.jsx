@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { DeponseContext } from "../App";
 
-function FormDepenses({ dispatch }) {
-  const { state } = useContext(DeponseContext);
+function FormDepenses() {
+  const { state, dispatch } = useContext(DeponseContext);
   console.log(state);
   const categories = [
     "Alimentation",
